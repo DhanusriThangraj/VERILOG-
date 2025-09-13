@@ -14,6 +14,12 @@ module logic_gates(input a,b,
   
   bufif1 i (bufif1_1,a,control);
   bufif0 j (bufif0_0,a,control);
+  assign bufif1_1  = (control) ? a[0] : 1'bz;   // bufif1
+  assign bufif0_0  = (~control) ? a[0] : 1'bz;  // bufif0
+
+  assign notif1_1  = (control) ? ~a[0] : 1'bz;  // notif1
+  assign notif0_0  = (~control) ? ~a[0] : 1'bz; // notif0
+
   
 //   bufif1 w (out[10],b,control);
 //   bufif0 t(out[11],b,control);
