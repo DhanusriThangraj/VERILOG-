@@ -28,7 +28,8 @@ module moore(input clk,reset,in,
       s2:next_state<=in?s1:s3;
       s3:next_state<=in?s1:s4;
       s4:next_state<=in?s5:s0;
-      s5:next_state<=in?s1:s2;
+      s5:next_state<=in?s1:s2;4; //overlapping
+            //s5:next_state<=s0; //non overlapping
       default:begin
         next_state<=s0;
       end
