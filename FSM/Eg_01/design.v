@@ -1,4 +1,6 @@
+//sequence detector  1110
 //design code
+
 module des(
 		input	clk	,
 		input	rst	,
