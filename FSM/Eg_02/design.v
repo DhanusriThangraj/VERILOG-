@@ -1,3 +1,4 @@
+//10001 5bit
 module mealy(input clk,reset,in,
              output out);
   
