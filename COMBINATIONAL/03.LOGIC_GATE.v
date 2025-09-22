@@ -1,3 +1,4 @@
+
 module logic_gates(input a,b,
                    input control,
                    output reg and1,or1,nand1,nor1,xor1,xnor1,not1,buf1,bufif1_1,bufif0_0,notif1_1,notif0_0);
