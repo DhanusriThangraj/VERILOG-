@@ -1,4 +1,4 @@
-module mux #(parameter n=3,m=8) (input [(n-1):0]sel, input [(m-1):0]in,
+\module mux #(parameter n=3,m=8) (input [(n-1):0]sel, input [(m-1):0]in,
            output reg out);
 
   //GATE LEVEL
