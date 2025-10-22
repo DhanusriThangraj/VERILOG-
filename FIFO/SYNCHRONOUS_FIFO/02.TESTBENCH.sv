@@ -1,3 +1,4 @@
+
 module syn_fifo_tb;
   reg clk;
   reg reset;
