@@ -1,3 +1,4 @@
+
 // Code your design here
 
 module syn_fifo( input clk,reset,
