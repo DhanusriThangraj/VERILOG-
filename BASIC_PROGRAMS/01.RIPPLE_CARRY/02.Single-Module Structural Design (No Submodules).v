@@ -9,13 +9,13 @@ module ripple_carry(
   assign c[0]=(a[0]&b[0]) | (b[0]&cin) | (cin&a[0]);
   
   assign sum[1]=a[1]^b[1]^c[0];
-  assign c[1]=(a[1]&b[1]) | (b[1]&cin) | (cin&a[1]);
+  assign c[1]=(a[1]&b[1]) | (b[1]&c[0]) | (c[0]&a[1]);
   
   assign sum[2]=a[2]^b[2]^c[1];
-  assign c[2]=(a[2]&b[2]) | (b[2]&cin) | (cin&a[2]);
+  assign c[2]=(a[2]&b[2]) | (b[2]&c[1]) | (c[1]&a[2]);
   
   assign sum[3]=a[3]^b[3]^c[2];
-  assign carry=(a[3]&b[3]) | (b[3]&cin) | (cin&a[3]);
+  assign carry=(a[3]&b[3]) | (b[3]&c[2]) | (c[2]&a[3]);
 
 endmodule
 
@@ -48,14 +48,9 @@ endmodule
 
 
 //output
-Compiler version U-2023.03-SP2_Full64; Runtime version U-2023.03-SP2_Full64;  Nov  4 20:48 2025
-Time=0 | a=0011 b=0001 cin=0 -> sum=0000 cin=0
+[2025-11-06 02:18:24 UTC] iverilog '-Wall' '-g2012' design.sv testbench.sv  && unbuffer vvp a.out  
+Time=0 | a=0011 b=0001 cin=0 -> sum=0100 cin=0
 Time=10 | a=1111 b=0000 cin=0 -> sum=1111 cin=0
 Time=20 | a=1001 b=0111 cin=1 -> sum=0001 cin=1
-$finish called from file "testbench.sv", line 26.
-$finish at simulation time                   30
-           V C S   S i m u l a t i o n   R e p o r t 
-Time: 30 ns
-CPU Time:      0.380 seconds;       Data structure size:   0.0Mb
-Tue Nov  4 20:48:28 2025
+testbench.sv:26: $finish called at 30 (1s)
 Done
