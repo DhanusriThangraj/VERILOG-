@@ -35,36 +35,10 @@ module syn_fifo #(parameter N=4,M=16,D=$clog2(M))( input clk,reset,
        
   end
   
-  assign full = ((write_ptr + 1) %(M-1)== read_ptr);   
+  assign full = ((write_ptr + 1'b1)== read_ptr); // same as // assign full = ((write_ptr + 1'b1) % M== read_ptr); 
+
+  //assign full=( (write_ptr[D]!=read_ptr[D]) && ((write_ptr[(D-1):0])==(read_ptr[(D-1):0])) );
+  
   assign empty=(read_ptr==write_ptr);
   
 endmodule
-
-
-
-// ram[15] never receives data
-
-// FIFO stops at 15 elements
-
-// FIFO full triggers early
-
-// FIFO capacity = 15, NOT 16
-
-// You wasted 1 location.
-
-(write_ptr + 1) % (M-1)
-Compute it:
-
-Copy code
-(M - 1) = 15
-So your modulo wrap is:
-
-
-x % 15   → values only 0..14
-Meaning pointer wraps like this:
-
-Copy code
-0,1,2,...,13,14,0,1,2,...
-✅ Pointer NEVER produces value 15
-✅ RAM[15] is NEVER WRITTEN
-✅ That is the wasted location
