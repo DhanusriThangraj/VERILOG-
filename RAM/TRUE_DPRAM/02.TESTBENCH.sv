@@ -58,25 +58,25 @@ module dual_port_ram_memory_tb;
     
   end
   
-initial begin
-    // Write sequential values on port1
-    we1 = 1;re1=0;
-    for ( i=0; i<16; i++) begin
-        @(posedge clk1);
-        addr1 = i;
-        din1  = i;
-    end
-    we1 = 0;
-end
+// initial begin
+//     // Write sequential values on port1
+//     we1 = 1;re1=0;
+//     for ( i=0; i<16; i++) begin
+//         @(posedge clk1);
+//         addr1 = i;
+//         din1  = i;
+//     end
+//     we1 = 0;
+// end
   
-initial begin
-    // Read back using port1
-    #200;  re1=1;
-    for (integer j=0; j<16; j++) begin
-      @(posedge clk1);
-        addr1 = j;
-    end
-end
+// initial begin
+//     // Read back using port1
+//     #200;  re1=1;
+//     for (integer j=0; j<16; j++) begin
+//       @(posedge clk1);
+//         addr1 = j;
+//     end
+// end
   
 // initial begin
 //     // Write sequential values on port2
@@ -141,6 +141,27 @@ end
 //     end
 // end
   
+initial begin
+    // Write sequential values on port2
+   we2 = 1; 
+  for ( i=0; i<16; i++) begin
+    @(posedge clk2);
+        addr2 = $urandom_range(0, 15);
+        din2 =$urandom_range(0, 15);
+        mem[i]= addr2 ;
+    end
+  we2= 0;
+end
+  
+  
+  initial begin
+    // Read back using port1
+#300; re1=1;
+    for (i=0; i<16; i++) begin
+      @(posedge clk1);
+        addr1 =mem[i];
+    end 
+  end
   
   initial begin
        #2000; $finish;
