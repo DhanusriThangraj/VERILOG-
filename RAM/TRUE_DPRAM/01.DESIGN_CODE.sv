@@ -1,4 +1,3 @@
-
 module dual_port_ram_memory #(
     parameter DATA_WIDTH = 4,
     parameter ADDR_WIDTH = 4
