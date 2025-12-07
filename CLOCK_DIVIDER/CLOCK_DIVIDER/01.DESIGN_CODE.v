@@ -1,6 +1,6 @@
 // Code your design here
 
-module clock_divider #(parameter system_freq=100000000,required_freq=50_000)//50kilohz
+module clock_divider #(parameter system_freq=100_000_000,required_freq=50_000)//50kilohz
 (input clk,reset,
  output reg out);
   
