@@ -4,7 +4,7 @@ module clock_divider #(parameter system_freq=100_000_000,required_freq=50_000)//
 (input clk,reset,
  output reg out);
   
-  localparam divider=(system_freq/(required_freq*2));
+ localparam divider=(system_freq/(required_freq*2));  //divider = 1000
   reg [$clog2(divider)-1:0]count;
 
   always @(posedge clk)begin
